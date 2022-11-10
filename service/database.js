@@ -3,7 +3,7 @@ import firebird from "node-firebird"
 const dbOptions = {
     host: 'localhost',
     port: '3050',
-    database: 'c:/midas/data/mercado.fdb',
+    database: 'c:\\midas\\data\\mercado.fdb',
     user: 'SYSDBA',
     password: 'masterkey',
     lowercase_keys : false, 
