@@ -36,7 +36,6 @@ export async function selectResumo(){
     
         // db = DATABASE
         db.query("select * from produtos", function(err, result) {
-            console.log(result);
             db.detach();
             return result
             
