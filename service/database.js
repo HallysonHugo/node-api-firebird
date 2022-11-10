@@ -35,13 +35,14 @@ export async function selectResumo(){
             throw err;
     
         // db = DATABASE
-        db.query("select * from produtos", function(err, result) {
+       let resumo = db.query("select * from produtos", function(err, result) {
             db.detach();
             return result
             
         });
-    return resumo;
+        return resumo;
     });
+    return resumo;
 }
 
 
