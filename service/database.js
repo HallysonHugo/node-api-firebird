@@ -1,7 +1,7 @@
 import firebird from "node-firebird"
 
 const dbOptions = {
-    host: '127.0.0.1',
+    host: '10.10.10.197',
     port: '3050',
     database: 'c:\\MIDAS\\DADOS\\mercado.fdb',
     user: 'SYSDBA',
@@ -28,22 +28,35 @@ const dbOptions = {
 // }
 
 
-export async function selectResumo(){
+// export async function selectResumo(){
+//    firebird.attach(dbOptions, function(err, db) {
+//         if (err)
+//             throw err;
+//         db.query("select first 1 descricao from produtos", function(err, result) {
+//             resumo = result;
+//             console.log(resumo);
+//         });
+//     });
+// }
+const pool = firebird.pool(1, dbOptions);
 
-   let resumo; 
-   await firebird.attach(dbOptions, async function(err, db) {
-
-        if (err)
-            throw err;
-    
-        // db = DATABASE
-       resumo = await db.query("select * from produtos", function(err, result) {
-            db.detach();  
-            return result;  
+export const selectResumo = (query) => {
+    return new Promise((resolver, rejeitar) => {
+      pool.get((err, db) => {
+        if (err) {
+          rejeitar(err);
+          return;
+        }
+        db.query(query, (erro, resultado) => {
+          if (erro) {
+            rejeitar(err);
+            return;
+          }
+          db.detach();
+          resolver(resultado);
         });
+      });
     });
-    console.log('Tela database: ' + resumo)
-    return resumo;
-}
+  }
 
 
