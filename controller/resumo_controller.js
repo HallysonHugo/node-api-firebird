@@ -1,6 +1,9 @@
-var database = require('../service/database')
+import {selectResumo} from '../service/database'
 
-module.exports =  async function getResumo(dataIni, dataFin){
-    let result = await database.selectResumo();
+async function getResumo(){
+    let result = await selectResumo();
     return result;
+
 }
+
+export { getResumo }

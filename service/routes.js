@@ -1,3 +1,3 @@
-const resumo = '/resumo';
-const login = '/login';
-module.exports = {resumo, login}
+const resumoUrl = '/resumo';
+const loginUrl = '/login';
+export {resumoUrl, loginUrl}

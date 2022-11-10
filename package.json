@@ -1,6 +1,7 @@
 {
   "name": "midasnow",
   "version": "2.0.0",
+  "type": "module",
   "description": "Api MidasNow",
   "main": "index.js",
   "scripts": {
@@ -11,6 +12,7 @@
   "dependencies": {
     "express": "^4.18.2",
     "md5": "^2.3.0",
+    "node-firebird": "^1.1.4",
     "nodemon": "^2.0.20"
   }
 }

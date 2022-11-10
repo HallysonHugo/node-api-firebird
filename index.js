@@ -1,19 +1,19 @@
-const express = require("express");
+import express from 'express';
 const app = express()
-const routes = require('./service/routes')
-var resumo_controller = require('./controller/resumo_controller')
+import {resumoUrl, loginUrl} from './service/routes';
+import {getResumo} from './controller/resumo_controller';
 
 
-app.get(routes.login, (req, res)=>{
+app.get(loginUrl, (req, res)=>{
     var matricula = req.query.matricula;
     var senha = req.query.senha;
 });
 
 
-app.get(routes.resumo,(req, res )=>{
+app.get(resumoUrl,(req, res )=>{
     var dataInicial = req.query.dataInicial;
     var dataFinal = req.query.dataFinal;
-    resumo_controller.getResumo(dataInicial, dataFinal);
+    getResumo(dataInicial, dataFinal);
     res.status(200).json({'teste':'certo'});
 });
 
