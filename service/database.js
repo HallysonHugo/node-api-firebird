@@ -31,15 +31,15 @@ const dbOptions = {
 export async function selectResumo(){
 
    let resumo; 
-   firebird.attach(dbOptions, function(err, db) {
+   await firebird.attach(dbOptions, async function(err, db) {
 
         if (err)
             throw err;
     
         // db = DATABASE
-       db.query("select * from produtos", function(err, result) {
+       resumo = await db.query("select * from produtos", function(err, result) {
             db.detach();  
-            resumo = result;  
+            return result;  
         });
     });
     console.log('Tela database: ' + resumo)
