@@ -2,7 +2,7 @@ var fb = require('firebird');
 
 async function connectDb(){
     var conn = fb.createConnection();
-    conn.connectSync('test.fdb', 'SYSDBA','masterkey');
+    conn.connectSync('c:/midas/dados/mercado.fdb', 'SYSDBA','masterkey');
     return conn;
 }
     let CONTAS_CAIXA = 1
