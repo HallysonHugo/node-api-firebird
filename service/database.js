@@ -29,7 +29,7 @@ const dbOptions = {
 
 
 export async function selectResumo(){
-    firebird.attach(dbOptions, function(err, db) {
+   let resumo = firebird.attach(dbOptions, function(err, db) {
 
         if (err)
             throw err;
@@ -41,7 +41,7 @@ export async function selectResumo(){
             return result
             
         });
-    
+    return resumo;
     });
 }
 

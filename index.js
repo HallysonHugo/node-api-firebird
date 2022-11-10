@@ -17,6 +17,7 @@ app.get(resumoUrl,(req, res )=>{
     var dataInicial = req.query.dataInicial;
     var dataFinal = req.query.dataFinal;
     let resumo = getResumo(dataInicial, dataFinal);
+    console.log(resumo);
     res.status(200).json(resumo);
 });
 
