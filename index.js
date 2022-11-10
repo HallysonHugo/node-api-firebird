@@ -17,7 +17,6 @@ app.get(resumoUrl,(req, res )=>{
     var dataInicial = req.query.dataInicial;
     var dataFinal = req.query.dataFinal;
     getResumo(dataInicial, dataFinal).then((value)=>{
-        console.log(value);
         res.status(200).send(value);
     });
    
