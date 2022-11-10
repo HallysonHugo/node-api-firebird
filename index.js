@@ -1,7 +1,7 @@
 import express from 'express';
 const app = express()
-import {resumoUrl, loginUrl} from './service/routes';
-import {getResumo} from './controller/resumo_controller';
+import {resumoUrl, loginUrl} from './service/routes.js';
+import {getResumo} from './controller/resumo_controller.js';
 
 
 app.get(loginUrl, (req, res)=>{
