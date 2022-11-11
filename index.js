@@ -1,14 +1,14 @@
 import express from 'express';
-//import cors from 'cors';
+import cors from 'cors';
 const app = express()
-import {resumoUrl, loginUrl} from './service/routes.js';
-import { getResumo} from './controller/resumo_controller.js';
+import {resumoUrl, usuariosUrl} from './src/resumo/routes/routes.js';
+import {loginUrl} from './src/login/routes/routes.js'
+import { getResumo } from './src/resumo/controller/resumo_controller.js';
 
 
 app.use(express.json());
-//app.use(cors());
+app.use(cors());
 
-let carregando = false;
 
 app.get(loginUrl, (req, res)=>{
     var matricula = req.query.matricula;
@@ -16,15 +16,25 @@ app.get(loginUrl, (req, res)=>{
 });
 
 
+
+
+
+app.get(usuariosUrl, (req, res)=>{
+    
+})
+
+
 app.get(resumoUrl,(req, res )=>{
-    carregando = true;
     var dataInicial = req.query.dataInicial;
     var dataFinal = req.query.dataFinal;
     getResumo(dataInicial, dataFinal).then((value)=>{
-        console.log(value)
-        res.send(value)
+        if(value != undefined){
+            res.send(value);
+        }
+        else{
+            res.sendStatus(400).send(value);
+        }
     });
-    
 });
 
 app.listen(3000,function(error){
